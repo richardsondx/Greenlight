@@ -1,0 +1,7 @@
+<% if current_user %>
+	Signed in as <%= current_user.name %>! <%= link_to "Sign out", signout_path, id: "sign_out" %> 
+<% else %>
+<%= link_to "Connect with Facebook", "/auth/facebook", id: "sign_in"%>
+<% end %>
+<h1>Pages#welcome</h1>
+<p>Find me in app/views/pages/welcome.html.erb</p>

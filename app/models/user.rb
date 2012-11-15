@@ -10,8 +10,16 @@ class User < ActiveRecord::Base
 
   		user.name = auth.info.name
   		user.firstname = auth.info.first_name
+  		user.lastname = auth.info.last_name
+
+  		user.gender = auth.extra.gender
+  		user.email = auth.info.email
+  		user.picture = auth.info.image
+
   		user.oauth_token = auth.credentials.oauth_token
-  		user.oauth_expire_at = Time.at(auth.credentials.exore)
+  		user.oauth_expire_at = Time.at(auth.credentials.expires_at)
+
+  		user.save
   	end
   end
 
