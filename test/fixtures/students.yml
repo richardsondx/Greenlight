@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  firstname: MyString
+  lastname: MyString
+  fullname: MyString
+  video: MyString
+  image: MyString
+  i_want_to_become: MyText
+  story: MyText
+  twitter: MyString
+  graduation_year: 1
+  goal: 1.5
+  user_id: 1
+  stories: MyText
+
+two:
+  firstname: MyString
+  lastname: MyString
+  fullname: MyString
+  video: MyString
+  image: MyString
+  i_want_to_become: MyText
+  story: MyText
+  twitter: MyString
+  graduation_year: 1
+  goal: 1.5
+  user_id: 1
+  stories: MyText

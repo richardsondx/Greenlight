@@ -1,0 +1,57 @@
+<h1>Listing students</h1>
+
+<table>
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Fullname</th>
+    <th>Gender</th>
+    <th>Video</th>
+    <th>Image</th>
+    <th>I want to become</th>
+    <th>Story</th>
+    <th>Twitter</th>
+    <th>City</th>
+    <th>Province</th>
+    <th>School</th>
+    <th>School</th>
+    <th>Graduation year</th>
+    <th>Goal</th>
+    <th>User</th>
+    <th>Stories</th>
+    <th>Reached goal</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @students.each do |student| %>
+  <tr>
+    <td><%= student.firstname %></td>
+    <td><%= student.lastname %></td>
+    <td><%= student.fullname %></td>
+    <td><%= student.gender %></td>
+    <td><%= student.video %></td>
+    <td><%= student.image %></td>
+    <td><%= student.i_want_to_become %></td>
+    <td><%= student.story %></td>
+    <td><%= student.twitter %></td>
+    <td><%= student.city %></td>
+    <td><%= student.province %></td>
+    <td><%= student.school %></td>
+    <td><%= student.school_id %></td>
+    <td><%= student.graduation_year %></td>
+    <td><%= student.goal %></td>
+    <td><%= student.user_id %></td>
+    <td><%= student.stories %></td>
+    <td><%= student.reached_goal %></td>
+    <td><%= link_to 'Show', student %></td>
+    <td><%= link_to 'Edit', edit_student_path(student) %></td>
+    <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Student', new_student_path %>

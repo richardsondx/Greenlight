@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @organization.name %>
+</p>
+
+<p>
+  <b>Manager:</b>
+  <%= @organization.manager %>
+</p>
+
+<p>
+  <b>Logo:</b>
+  <%= @organization.logo %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @organization.city %>
+</p>
+
+<p>
+  <b>Province:</b>
+  <%= @organization.province %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @organization.description %>
+</p>
+
+<p>
+  <b>Contribution:</b>
+  <%= @organization.contribution %>
+</p>
+
+<p>
+  <b>Contribution count:</b>
+  <%= @organization.contribution_count %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @organization.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_organization_path(@organization) %> |
+<%= link_to 'Back', organizations_path %>
