@@ -7,6 +7,7 @@ gem 'rails', '3.2.7'
 
 # Database
 gem 'pg'
+gem "hirb"
 
 # FACEBOOK API
 gem 'omniauth'

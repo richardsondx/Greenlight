@@ -1,0 +1,91 @@
+<h1>Steps#step_2</h1>
+<p>Verify <%= @user.account_type%>'s informations</p>
+<% if @user.account_type == "organization" %>
+	<%= form_for(@organization) do |f| %>
+		<div class="field">
+	    	<%= f.label :logo %><br />
+	    	<%= f.text_field :logo %>
+	  	</div>
+		<div class="field">
+			<%= f.label :name %><br />
+	    	<%= f.text_field :name %>
+		</div>
+		<div class="field">
+	    	<%= f.label :manager %><br />
+	    	<%= f.text_field :manager %>
+	  	</div>
+	  	<div class="field">
+	    	<%= f.label :city %><br />
+	    	<%= f.text_field :city %>
+	  	</div>
+	  	<div class="field">
+	    	<%= f.label :province %><br />
+	    	<%= f.text_field :province %>
+	  	</div>
+	  	<div class="field">
+	    	<%= f.label :description %><br />
+	    	<%= f.text_area :description %>
+	  	</div>
+	  	<div class="actions">
+			<%= f.submit "next" %>
+		</div>
+	<% end %>
+<% else %>
+	<%= form_for(@student) do |f| %>
+		<div class="field">
+			<%= f.label :firstname %><br />
+			<%= f.text_field :firstname %>
+		</div>
+		<div class="field">
+			<%= f.label :lastname %><br />
+			<%= f.text_field :lastname %>
+		</div>
+		<div class="field">
+			<%= f.label :gender %><br />
+			<%= f.text_field :gender %>
+		</div>
+		<div class="field">
+			<%= f.label :video %><br />
+			<%= f.text_field :video %>
+		</div>
+		<div class="field">
+			<%= f.label :image %><br />
+			<%= f.text_field :image %>
+		</div>
+		<div class="field">
+			<%= f.label :i_want_to_become %><br />
+			<%= f.text_area :i_want_to_become %>
+		</div>
+		<div class="field">
+			<%= f.label :story %><br />
+			<%= f.text_area :story %>
+		</div>
+		<div class="field">
+			<%= f.label :twitter %><br />
+			<%= f.text_field :twitter %>
+		</div>
+		<div class="field">
+			<%= f.label :province %><br />
+			<%= f.collection_select :province, Constants::PROVINCE, :to_s, :humanize %>
+		</div>
+		<div class="field">
+			<%= f.label :city %><br />
+			<%= f.text_field :city %>
+		</div>
+		<div class="field">
+			<%= f.label :school %><br />
+			<%= f.text_field :school %>
+		</div>
+		<div class="field">
+			<%= f.label :graduation_year %><br />
+			<%= f.number_field :graduation_year %>
+		</div>
+		<div class="field">
+			<%= f.label :goal %><br />
+			<%= f.text_field :goal %>
+		</div>
+		<div class="actions">
+			<%= f.submit %>
+		</div>
+	<% end %>
+<% end %>

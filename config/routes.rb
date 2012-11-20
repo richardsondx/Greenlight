@@ -1,4 +1,36 @@
 Greenlight::Application.routes.draw do
+
+
+  get "donations/payment"
+
+  get "donations/success"
+
+  get "donations/failure"
+
+  get "organization_pages/home"
+
+  get "organization_pages/profile"
+
+  get "organization_pages/setting"
+
+  get "organization_pages/sponsoring"
+
+  get "organization_pages/donations"
+
+  get "user_pages/home"
+
+  get "user_pages/profile"
+
+  get "user_pages/setting"
+
+  resources :users
+  resources :organizations
+  resources :schools
+  resources :students
+
+  get "steps/step_1"
+  get "steps/step_2"
+  
   get "pages/welcome"
 
   match 'auth/:provider/callback', to: 'sessions#create'

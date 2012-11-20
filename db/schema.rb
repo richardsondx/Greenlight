@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121115133148) do
+ActiveRecord::Schema.define(:version => 20121120005943) do
 
   create_table "identities", :force => true do |t|
     t.string   "name"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(:version => 20121115133148) do
     t.string   "password_digest"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "organization_notifications", :force => true do |t|
+    t.text     "message"
+    t.string   "notice_type"
+    t.string   "from",            :default => "admin"
+    t.integer  "organization_id"
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
   end
 
   create_table "organizations", :force => true do |t|
@@ -31,8 +40,9 @@ ActiveRecord::Schema.define(:version => 20121115133148) do
     t.float    "contribution"
     t.integer  "contributed_count"
     t.integer  "user_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.text     "organization_notifications"
   end
 
   create_table "schools", :force => true do |t|
@@ -42,6 +52,15 @@ ActiveRecord::Schema.define(:version => 20121115133148) do
     t.integer  "students"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "student_notifications", :force => true do |t|
+    t.text     "message"
+    t.string   "notice_type"
+    t.string   "from"
+    t.integer  "student_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "students", :force => true do |t|
@@ -63,8 +82,9 @@ ActiveRecord::Schema.define(:version => 20121115133148) do
     t.integer  "user_id"
     t.text     "stories"
     t.boolean  "reached_goal"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.text     "student_notifications"
   end
 
   create_table "users", :force => true do |t|
@@ -74,14 +94,17 @@ ActiveRecord::Schema.define(:version => 20121115133148) do
     t.string   "email"
     t.string   "oauth_token"
     t.datetime "oauth_expire_at"
-    t.string   "type"
+    t.string   "account_type"
     t.integer  "profile_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.string   "provider"
     t.string   "uid"
     t.string   "gender"
     t.string   "picture"
+    t.integer  "sign_in_count",      :default => 0
+    t.string   "current_sign_in_ip"
+    t.integer  "profile_state"
   end
 
 end

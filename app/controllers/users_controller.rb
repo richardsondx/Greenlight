@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   # GET /users
   # GET /users.json
   def index
@@ -60,8 +61,12 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
+        if @user.profile_id.nil?
+          format.html {redirect_to steps_step_2_path}
+        else
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
+        end
       else
         format.html { render action: "edit" }
         format.json { render json: @user.errors, status: :unprocessable_entity }

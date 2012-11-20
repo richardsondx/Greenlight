@@ -1,0 +1,7 @@
+<h1>Steps#step_1</h1>
+<p>Find me in app/views/steps/step_1.html.erb</p>
+<%= form_for(@user) do |f| %>
+	<%= f.label "Are you a Student or an Organization?" %>
+	<%= f.collection_select :account_type, User::TYPES, :to_s, :humanize %>
+	<%= f.submit "next" %>
+<% end %>

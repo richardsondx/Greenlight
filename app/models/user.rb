@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :firstname, :lastname, :name, :oauth_expire_at, :oauth_token, :profile_id, :type
+  attr_accessible :email, :firstname, :lastname, :name, 
+  				  :oauth_expire_at, :oauth_token, :profile_id,
+  				  :account_type, :sign_in_count
 
-  TYPE = %[organizer student]
+  TYPES = ["student", "organization"]
 
   def self.from_omniauth(auth)
   	where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
@@ -16,11 +18,41 @@ class User < ActiveRecord::Base
   		user.email = auth.info.email
   		user.picture = auth.info.image
 
-  		user.oauth_token = auth.credentials.oauth_token
+  		user.oauth_token = auth.credentials.token
   		user.oauth_expire_at = Time.at(auth.credentials.expires_at)
+
+  		user.sign_in_count += 1
 
   		user.save
   	end
+  end
+
+  def self.generate_profile(user)
+  	if user.account_type == "student"
+  		create_student(user)
+  	elsif user.account_type == "organization"
+  		create_organization(user)
+  	end
+  end
+
+  def create_student(user)
+  	student = Student.new
+
+  	student.firstname = user.firstname 
+  	student.lastname = user.lastname
+  	student.fullname = "#{user.firstname} #{user.lastname}"
+  	student.user_id = user
+  	student.gender = user.gender
+
+  	user.save
+  end
+
+  def create_organization(user)
+  	organizer = Organization.new
+
+  	organization.name
+
+  	organization.save
   end
 
 end
